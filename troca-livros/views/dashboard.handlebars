@@ -1,0 +1,30 @@
+<h2>Dashboard</h2>
+<div class="dashboard">
+  <div class="card">
+    <h3>Livros Cadastrados</h3>
+    <p>{{totalLivros}}</p>
+  </div>
+  <div class="card">
+    <h3>Mensagens Trocadas</h3>
+    <p>{{totalMensagens}}</p>
+  </div>
+  <div class="card">
+    <h3>Avaliações Realizadas</h3>
+    <p>{{totalAvaliacoes}}</p>
+  </div>
+</div>
+<canvas id="statsChart"></canvas>
+<script>
+  const ctx = document.getElementById('statsChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Livros', 'Mensagens', 'Avaliações'],
+      datasets: [{
+        label: 'Total',
+        data: [{{totalLivros}}, {{totalMensagens}}, {{totalAvaliacoes}}],
+        backgroundColor: ['#007bff', '#28a745', '#dc3545']
+      }]
+    }
+  });
+</script>

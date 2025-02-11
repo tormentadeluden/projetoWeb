@@ -1,0 +1,11 @@
+<h2>Painel Administrativo</h2>
+
+<h3>Usuários</h3>
+{{#each users}}
+  <p>{{this.name}} <form action="/admin/delete-user/{{this.id}}" method="POST"><button>Deletar</button></form></p>
+{{/each}}
+
+<h3>Livros</h3>
+{{#each books}}
+  <p>{{this.title}} <form action="/admin/delete-book/{{this.id}}" method="POST"><button>Deletar</button></form></p>
+{{/each}}

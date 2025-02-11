@@ -1,0 +1,25 @@
+<h2>Lista de Livros Disponíveis</h2>
+<a href="/livros/novo">Cadastrar Novo Livro</a>
+<div class="livros-container">
+  {{#each books}}
+    <div class="livro-card">
+      <img src="{{this.imageUrl}}" alt="Capa do Livro">
+      <h3>{{this.title}}</h3>
+      <p>Autor: {{this.author}}</p>
+      <p>{{this.description}}</p>
+      <p>Categoria: {{this.category}}</p>
+    </div>
+  {{/each}}
+</div>
+
+<form action="/livros/busca" method="GET">
+  <input type="text" name="search" placeholder="Pesquisar livros">
+  <select name="category">
+    <option value="">Todas as categorias</option>
+    <option value="Ficção">Ficção</option>
+    <option value="Não-Ficção">Não-Ficção</option>
+    <option value="Fantasia">Fantasia</option>
+    <option value="História">História</option>
+  </select>
+  <button type="submit">Buscar</button>
+</form>

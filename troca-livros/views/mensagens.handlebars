@@ -1,0 +1,7 @@
+<h2>Mensagens Recebidas</h2>
+{{#each messages}}
+  <div class="mensagem">
+    <p><strong>De:</strong> {{this.senderId}}</p>
+    <p>{{this.content}}</p>
+  </div>
+{{/each}}

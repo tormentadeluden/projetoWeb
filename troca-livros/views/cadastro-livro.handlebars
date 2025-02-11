@@ -1,0 +1,28 @@
+<h2>Cadastrar Novo Livro</h2>
+<form action="/livros" method="POST">
+  <input type="text" name="title" placeholder="Título" required>
+  <input type="text" name="author" placeholder="Autor" required>
+  <textarea name="description" placeholder="Descrição" required></textarea>
+  <input type="text" name="category" placeholder="Categoria" required>
+  <input type="text" name="imageUrl" placeholder="URL da Capa (opcional)">
+  <button type="submit">Cadastrar</button>
+</form>
+
+<button onclick="buscarLivro()">Buscar na API</button>
+<div id="resultadoApi"></div>
+
+<script>
+  async function buscarLivro() {
+    const titulo = document.querySelector('input[name="title"]').value;
+    const resposta = await fetch(`/livros/api/${titulo}`);
+    const dados = await resposta.json();
+    
+    if (dados.items) {
+      document.getElementById("resultadoApi").innerHTML = `
+        <p><strong>${dados.items[0].volumeInfo.title}</strong></p>
+        <p>${dados.items[0].volumeInfo.authors}</p>
+        <p>${dados.items[0].volumeInfo.description}</p>
+      `;
+    }
+  }
+</script>
